@@ -1,35 +1,35 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { ProfileContainer } from "./Profile.styled";
+import { ProfileContainer, Description, ProfileImage, ProfileName, ProfileTag, StatsList, StatsItem, StatsLabel, StatsQuantity } from "./Profile.styled";
 
 export const Profile = ({ username, tag, location, avatar, stats }) => {
     return (
         <ProfileContainer>
-  <div class="description">
-    <img
+  <Description>
+    <ProfileImage
       src={avatar}
       alt="User avatar"
       class="avatar"
     />
-    <p class="name">{username}</p>
-    <p class="tag">{tag}</p>
-    <p class="location">{location}</p>
-  </div>
+    <ProfileName>{username}</ProfileName>
+    <ProfileTag>{tag}</ProfileTag>
+    <ProfileTag>{location}</ProfileTag>
+  </Description>
 
-  <ul class="stats">
-    <li>
-      <span class="label">Followers</span>
-      <span class="quantity">{stats.followers}</span>
-    </li>
-    <li>
-      <span class="label">Views</span>
-      <span class="quantity">{stats.views}</span>
-    </li>
-    <li>
-      <span class="label">Likes</span>
-      <span class="quantity">{stats.likes}</span>
-    </li>
-  </ul>
+  <StatsList>
+    <StatsItem>
+      <StatsLabel>Followers</StatsLabel>
+      <StatsQuantity>{stats.followers}</StatsQuantity>
+    </StatsItem>
+    <StatsItem>
+      <StatsLabel>Views</StatsLabel>
+      <StatsQuantity>{stats.views}</StatsQuantity>
+    </StatsItem>
+    <StatsItem>
+      <StatsLabel>Likes</StatsLabel>
+      <StatsQuantity>{stats.likes}</StatsQuantity>
+    </StatsItem>
+  </StatsList>
   </ProfileContainer>
     )
 }

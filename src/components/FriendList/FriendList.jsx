@@ -1,23 +1,31 @@
 import PropTypes from "prop-types";
 import React from "react";
-import {  } from './FriendList.styled';
+import { List } from './FriendList.styled';
 import { FriendListItem } from './FriendListItem'
 
 export const FriendList = ({ friends }) => {
     return (
-        <ul class="friend-list">
-       
-      </ul>
+        <List>
+            {friends.map(friend => (
+                <FriendListItem
+                    avatar = {friend.avatar}
+                    name = {friend.name}
+                    isOnline = {friend.isOnline}
+                    key = {friend.id}
+                ></FriendListItem>
+            ))}
+      </List>
     )
 }
 
 FriendList.propTypes = {
-    title: PropTypes.string,
-    stats: PropTypes.arrayOf(
+    friends: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.string,
-            label: PropTypes.string,
-            percentage: PropTypes.number
+            avatar: PropTypes.string,
+            name: PropTypes.string,
+            isOnline: PropTypes.bool,
+            id: PropTypes.number
         })
-    ),
-};
+    )
+}
+    

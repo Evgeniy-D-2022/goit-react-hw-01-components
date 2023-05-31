@@ -1,32 +1,20 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { } from './Statistics.styled';
+import { StatisticsSection, StatisticsTitle, StatisticsList, StatisticsItem, StatisticsLabel, StatisticsPercentage } from './Statistics.styled';
 import { generateColor } from './randomColor';
 
 export const Statistics = ({ title, stats }) => {
     return (
-        <section class="statistics">
-  <h2 class="title">Upload stats</h2>
+        <StatisticsSection>
+  {title && <StatisticsTitle>{title}</StatisticsTitle>}
 
-  <ul class="stat-list">
-    <li class="item">
-      <span class="label">.docx</span>
-      <span class="percentage">4%</span>
-    </li>
-    <li class="item">
-      <span class="label">.mp3</span>
-      <span class="percentage">14%</span>
-    </li>
-    <li class="item">
-      <span class="label">.pdf</span>
-      <span class="percentage">41%</span>
-    </li>
-    <li class="item">
-      <span class="label">.mp4</span>
-      <span class="percentage">12%</span>
-    </li>
-  </ul>
-</section>
+  <StatisticsList> {stats.map(elem => (<StatisticsItem key={elem.id} 
+  style={{ backgroundColor: generateColor() }}>
+    <StatisticsLabel>{elem.label}</StatisticsLabel>
+    <StatisticsPercentage>{elem.percentage}</StatisticsPercentage>
+  </StatisticsItem>))}
+  </StatisticsList>
+</StatisticsSection>
     )
 }
 
